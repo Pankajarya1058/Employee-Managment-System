@@ -29,6 +29,6 @@ const employeeSchema = async () => {
     } 
 };
 
-employeeSchema();
+// employeeSchema();
 
 export default employeeSchema;

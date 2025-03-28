@@ -1,8 +1,7 @@
 import bcrypt from 'bcrypt';
 import pool from './db/db.js';
 
-const userRegister = async () => {
-    // const connection = await connectToDatabase();
+export const userRegister = async () => {
     try {
         const [existingUser] = await pool.execute(
             `SELECT * FROM users WHERE email = ?`, ['admin@gmail.com']
@@ -24,4 +23,4 @@ const userRegister = async () => {
     }
 };
 
-userRegister();
+// userRegister();

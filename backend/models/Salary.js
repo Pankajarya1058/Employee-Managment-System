@@ -12,6 +12,7 @@ const salarySchema = async () => {
     deductions DECIMAL(10, 2) DEFAULT 0.00,
     netSalary DECIMAL(10, 2),
     payDate DATE NOT NULL,
+    tax DECIMAL(10, 2) NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     FOREIGN KEY (employeeId) REFERENCES Employee(id)
@@ -26,5 +27,5 @@ const salarySchema = async () => {
 
 };
 
-salarySchema();
+// salarySchema();
 export {salarySchema}

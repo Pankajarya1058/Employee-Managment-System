@@ -22,6 +22,6 @@ const departmentSchema = async () => {
 
 };
 
-departmentSchema();
+// departmentSchema();
 export {departmentSchema}
 

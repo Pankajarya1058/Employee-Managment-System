@@ -23,5 +23,5 @@ const createUsersTable = async () => {
     }
 };
 
-createUsersTable();
+// createUsersTable();
 export default createUsersTable;

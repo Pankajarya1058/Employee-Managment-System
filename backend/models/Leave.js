@@ -26,5 +26,5 @@ const leaveSchema = async () => {
 
 };
 
-leaveSchema();
+// leaveSchema();
 export {leaveSchema}
