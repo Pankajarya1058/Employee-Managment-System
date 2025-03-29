@@ -7,10 +7,10 @@ const getAttendance = async (req, res) => {
         const date = new Date().toISOString().split('T')[0]
         const [attendance] = await pool.execute(`
             SELECT a.*, e.employeeId, e.departmentId, e.userId, d.dep_name, u.name
-            FROM Attendance a
-            JOIN Employee e ON a.empId = e.employeeId
-            JOIN Department d ON e.departmentId = d.id
-            JOIN Users u ON e.userId = u.id
+            FROM attendance a
+            JOIN employee e ON a.empId = e.employeeId
+            JOIN department d ON e.departmentId = d.id
+            JOIN users u ON e.userId = u.id
             WHERE a.date = ?`,
             [date]
         );
@@ -31,14 +31,14 @@ const updateAttendance = async (req, res) => {
         const date = new Date().toISOString().split('T')[0]; // Current Date in 'YYYY-MM-DD' format
 
         // Check if Employee Exists
-        const [employee] = await pool.execute("SELECT * FROM Employee WHERE employeeId = ?", [employeeId]);
+        const [employee] = await pool.execute("SELECT * FROM employee WHERE employeeId = ?", [employeeId]);
         if (employee.length === 0) {
             return res.status(404).json({ success: false, message: "Employee not found" });
         }
 
         // Update Attendance Record
         const [attendance] = await pool.execute(
-            "UPDATE Attendance SET status = ? WHERE empId = ? AND date = ?",
+            "UPDATE attendance SET status = ? WHERE empId = ? AND date = ?",
             [status, employeeId, date]
         );
         console.log(attendance)
@@ -54,41 +54,6 @@ const updateAttendance = async (req, res) => {
     }
 }
 
-// const attendanceReport = async (req, res) => {
-//     try {
-//         const {date, limit = 5, skip = 0} = req.query;
-//         const query = {};
-
-//         if(date) {
-//             query.date = date;
-//         }
-
-//         const attendancedata = await Attendance.find(query).populate({
-//             path: "employeeId",
-//             populate: [
-//                 "department",
-//                 "userId"
-//             ]
-//         }).sort({date: -1}).limit(parseInt(limit)).skip(parseInt(skip))
-
-//         const groupData = attendancedata.reduce((result, record) => {
-//             if(!result[record.date]) {
-//                 result[record.date] = []
-//             }
-//             result[record.date].push({
-//                 employeeId: record.employeeId,
-//                 employeeName: record.name,
-//                 departmentName: record.dep_name,
-//                 status: record.status || "Not Marked"
-//             })
-//             return result;
-//         }, {})
-//         return res.status(201).json({success: true, groupData})
-//     } catch(error) {
-//         res.status(500).json({success: false, message: error.message})
-
-//     }
-// }
 
 const attendanceReport = async (req, res) => {
     try {
@@ -98,10 +63,10 @@ const attendanceReport = async (req, res) => {
         let query = `SELECT a.date, e.employeeId, u.name AS employeeName, 
                     d.dep_name AS departmentName, 
                     COALESCE(a.status, 'Not Marked') AS status 
-                    FROM Attendance a
-                    JOIN Employee e ON a.empId = e.employeeId
-                    JOIN Department d ON e.departmentId = d.id
-                    JOIN Users u ON e.userId = u.id `;
+                    FROM attendance a
+                    JOIN employee e ON a.empId = e.employeeId
+                    JOIN department d ON e.departmentId = d.id
+                    JOIN users u ON e.userId = u.id `;
 
         let queryParams = [];
         

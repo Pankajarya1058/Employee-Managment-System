@@ -4,7 +4,7 @@ const employeeSchema = async () => {
     // const db = await connectToDatabase();
 
     const createTableQuery = `
-    CREATE TABLE Employee (
+    CREATE TABLE employee (
         id INT AUTO_INCREMENT PRIMARY KEY,
         userId INT NOT NULL,
         employeeId VARCHAR(255) NOT NULL UNIQUE,
@@ -18,7 +18,7 @@ const employeeSchema = async () => {
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
         FOREIGN KEY (userId) REFERENCES users(id),
-        FOREIGN KEY (departmentId) REFERENCES Department(id)
+        FOREIGN KEY (departmentId) REFERENCES department(id)
     );`
 
     try {

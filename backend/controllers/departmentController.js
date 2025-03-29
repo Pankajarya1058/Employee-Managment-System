@@ -4,9 +4,8 @@ import pool from '../db/db.js';
 
 const getDepartments = async (req, res) => {
     try {
-        // console.log("comes in GetDepartments function");
 
-        const [departments] = await pool.execute('SELECT * FROM Department');
+        const [departments] = await pool.execute('SELECT * FROM department');
         return res.status(200).json({ success: true, departments })
     } catch (error) {
         console.log('MySQL:', error)
@@ -19,7 +18,7 @@ const addDepartment = async (req, res) => {
         const { dep_name, description } = req.body;
 
         const insertQuery = `
-            INSERT INTO Department (dep_name, description)
+            INSERT INTO department (dep_name, description)
             VALUES (?, ?)
         `;
 

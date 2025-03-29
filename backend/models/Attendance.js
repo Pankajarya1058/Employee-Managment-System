@@ -5,13 +5,13 @@ import pool from '../db/db.js';
 const attendanceSchema = async () => {
 
     const createTableQuery = `
-    CREATE TABLE IF NOT EXISTS Attendance (
+    CREATE TABLE IF NOT EXISTS attendance (
     id INT AUTO_INCREMENT PRIMARY KEY,
     date DATE NOT NULL,
     empId VARCHAR(255) NOT NULL,
     status ENUM('Present', 'Absent', 'Sick', 'Leave') DEFAULT NULL,
     INDEX idx_empId (empId),  -- Added an index for empId to optimize queries
-    FOREIGN KEY (empId) REFERENCES Employee(employeeId) ON DELETE CASCADE
+    FOREIGN KEY (empId) REFERENCES employee(employeeId) ON DELETE CASCADE
 )`;
     try {
         const [result] = await pool.execute(createTableQuery);

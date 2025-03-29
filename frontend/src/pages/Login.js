@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {useAuth} from '../context/authContext'
-const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL || '/ems';
 //const backendUrl = "/api";
 
 const Login = () => {

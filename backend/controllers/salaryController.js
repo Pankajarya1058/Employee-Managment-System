@@ -7,35 +7,6 @@ const calculateTax = (salary) => {
     return salary * 0.20;  // 20% tax for high salary
 };
 
-// const addSalary = async (req, res) => {
-//     try {
-//         console.log("Entered in addSalary backend");
-//         salarySchema();
-
-//         const {employeeId, basicSalary, allowances, deductions, payDate} = req.body
-
-//         console.log({employeeId, basicSalary, allowances, deductions, payDate})
-
-//         // Calculate tax
-//         const tax = calculateTax(basicSalary);
-
-//         const totalSalary = parseInt(basicSalary) + parseInt(allowances) - parseInt(deductions);
-
-//         const query = `
-//             INSERT INTO Salary (employeeId, basicSalary, allowances, deductions, netSalary, payDate)
-//             VALUES (?, ?, ?, ?, ?, ?)
-//         `;
-//         const values = [employeeId, basicSalary, allowances, deductions, totalSalary, payDate];
-
-//         const [result] = await pool.execute(query, values);
-
-//         res.status(201).json({ success: true, message: 'Salary added successfully', result });
-//     } catch (error) {
-//         console.error('Error adding salary:', error);
-//         res.status(500).json({ success: false, message: 'Failed to add salary' });
-//     }
-
-// }
 
 const addSalary = async (req, res) => {
     try {
@@ -57,7 +28,7 @@ const addSalary = async (req, res) => {
         const netSalary = basic + allow - deduct - tax;
 
         const query = `
-            INSERT INTO Salary (employeeId, basicSalary, allowances, deductions, tax, netSalary, payDate)
+            INSERT INTO salary (employeeId, basicSalary, allowances, deductions, tax, netSalary, payDate)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         `;
         const values = [employeeId, basic, allow, deduct, tax, netSalary, payDate];

@@ -4,7 +4,7 @@ import pool from '../db/db.js';
 const salarySchema = async () => {
 
     const createTableQuery = `
-    CREATE TABLE IF NOT EXISTS Salary (
+    CREATE TABLE IF NOT EXISTS salary (
     id INT AUTO_INCREMENT PRIMARY KEY,
     employeeId INT NOT NULL,
     basicSalary DECIMAL(10, 2) NOT NULL,
@@ -15,7 +15,7 @@ const salarySchema = async () => {
     tax DECIMAL(10, 2) NULL,
     createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (employeeId) REFERENCES Employee(id)
+    FOREIGN KEY (employeeId) REFERENCES employee(id)
     );
     `;
     try {

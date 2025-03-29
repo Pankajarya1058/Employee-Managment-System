@@ -14,7 +14,7 @@ const leaveSchema = async () => {
     status ENUM('Pending', 'Approved', 'Rejected') DEFAULT 'Pending',
     applied_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-    FOREIGN KEY (employee_id) REFERENCES Employee(id) ON DELETE CASCADE
+    FOREIGN KEY (employee_id) REFERENCES employee(id) ON DELETE CASCADE
     );
     `;
     try {

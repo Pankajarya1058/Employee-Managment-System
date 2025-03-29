@@ -3,7 +3,7 @@ FROM node:latest AS builder
 
 WORKDIR	/app
 
-COPY package* . 
+COPY package* ./ 
 
 RUN npm i
 

@@ -2,8 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SummaryCard from './SummaryCard';
 import { FaBuilding, FaCheckCircle, FaFileAlt, FaHourglassHalf, FaMoneyBillWave, FaTimesCircle, FaUsers } from 'react-icons/fa';
 import axios from 'axios';
-const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
-//const backendUrl = "/api";
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL || '/ems';
 
 const AdminSummary = () => {
   const [summary, setSummary] = useState(null)

@@ -5,7 +5,7 @@ import pool from '../db/db.js';
 const departmentSchema = async () => {
 
     const createTableQuery = `
-    CREATE TABLE IF NOT EXISTS Department (
+    CREATE TABLE IF NOT EXISTS department (
     id INT AUTO_INCREMENT PRIMARY KEY,
     dep_name VARCHAR(255) NOT null,
     description TEXT,

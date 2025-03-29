@@ -7,20 +7,20 @@ const defaultAttendance = async (req, res, next) => {
 
         // Check if attendance for today already exists
         const [existingAttendance] = await pool.execute(
-            `SELECT * FROM Attendance WHERE date = ? LIMIT 1`, 
+            `SELECT * FROM attendance WHERE date = ? LIMIT 1`, 
             [date]
         );
         
         if (existingAttendance.length === 0) {
             // Get all employees
-            const [employees] = await pool.execute(`SELECT employeeId FROM Employee`);
+            const [employees] = await pool.execute(`SELECT employeeId FROM employee`);
             
             // Prepare attendance records
             const attendanceRecords = employees.map(employee => [date, employee.employeeId, null]);
 
             // Insert attendance records
             await pool.query(
-                `INSERT INTO Attendance (date, empId, status) VALUES ?`,
+                `INSERT INTO attendance (date, empId, status) VALUES ?`,
                 [attendanceRecords]
             );
         }

@@ -35,7 +35,7 @@ const addEmployee = async (req, res) => {
         } = req.body;
 
         // Check if user already exists
-        const [existingUser] = await pool.execute("SELECT * FROM Users WHERE email = ?", [email]);
+        const [existingUser] = await pool.execute("SELECT * FROM users WHERE email = ?", [email]);
         if (existingUser.length > 0) {
             return res.status(400).json({ success: false, error: "User already registered" });
         }
@@ -45,7 +45,7 @@ const addEmployee = async (req, res) => {
 
         // Insert new user
         const [userResult] = await pool.execute(
-            "INSERT INTO Users (name, email, password, role, profile_image) VALUES (?, ?, ?, ?, ?)",
+            "INSERT INTO users (name, email, password, role, profile_image) VALUES (?, ?, ?, ?, ?)",
             [name, email, hashPassword, role, req.file ? req.file.filename : null]
         );
 
@@ -61,7 +61,7 @@ const addEmployee = async (req, res) => {
 
         // Insert new employee
         await pool.execute(
-            "INSERT INTO Employee (userId, mobile_number, employeeId, dob, gender, maritalStatus, designation, departmentId, salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            "INSERT INTO employee (userId, mobile_number, employeeId, dob, gender, maritalStatus, designation, departmentId, salary) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
             [userId, mobile_number, employeeId, dob, gender, maritalStatus, designation, departmentId, salary]
         );
 
@@ -162,15 +162,6 @@ const updateEmployee = async (req, res) => {
             return res.status(404).json({ success: false, error: "Employee not found" });
         }
 
-        // console.log("Employee name:", employee[0].name);
-        // console.log(employee[0].email)
-        // console.log(employee[0].dob)
-        // console.log(employee[0].gender)
-        // console.log(employee[0].maritalStatus)
-        // console.log(employee[0].designation)
-        // console.log(employee[0].salary)
-        // console.log(employee[0].userId)
-        // console.log(employee[0].departmentId)
 
        // Check if the user exists
         const [user] = await pool.execute(
@@ -193,9 +184,6 @@ const updateEmployee = async (req, res) => {
             [departmentId, maritalStatus, designation, salary, employee[0].userId]
         );
 
-        // if (updateUser.affectedRows === 0 || updateEmployee.affectedRows === 0) {
-        //     return res.status(404).json({ success: false, error: "Update failed, document not found" });
-        // }
 
         return res.status(200).json({ success: true, message: "Employee updated successfully" });
 
@@ -208,9 +196,7 @@ const updateEmployee = async (req, res) => {
 const fetchEmployeesByDepId = async (req, res) => {
     console.log('Hitting GET /api/fetchEmployeesByDepId/:id');
     const { id } = req.params;
-    // console.log('Employee ID:', id);
     try {
-        // console.log("comes in GetEmployee function");
         const [employees] = await pool.execute(`
             SELECT e.*, u.name AS user_name, u.email, u.profile_image, d.dep_name, departmentId
             FROM employee e

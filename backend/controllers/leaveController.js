@@ -3,8 +3,6 @@ import pool from '../db/db.js';
 
 const addLeave = async (req, res) => {
     try {
-        console.log("Entered in add Leave backend");
-        leaveSchema();
 
         const {userId, leaveType, startDate, endDate, reason} = req.body
 
@@ -59,11 +57,6 @@ const getLeaves = async (req, res) => {
         `, [id]);
         }
 
-        console.log(leaves)
-
-        // if (leaves.length === 0) {
-        //     return res.status(404).json({ success: false, error: "No Leaves found" });
-        // }
         return res.status(200).json({ success: true, leaves })
 
 
@@ -110,9 +103,6 @@ const getLeaveDetail = async (req, res) => {
             WHERE l.id = ?
         `, [id]);
 
-        // console.log(getLeaveDetail)
-        // console.log(getLeaveDetail[0].employee_id)
-        // console.log(getLeaveDetail[0].name)
 
         if (getLeaveDetail.length === 0) {
             return res.status(404).json({ success: false, error: "No Leaves found" });
