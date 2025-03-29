@@ -51,8 +51,6 @@ services:
     networks:
       - ems_network
     restart: always
-    extra_hosts:
-      - "emsbackend:host-gateway"  # Allow frontend to resolve backend
     depends_on:
       - backend
 

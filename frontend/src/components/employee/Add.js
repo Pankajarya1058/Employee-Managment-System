@@ -35,7 +35,7 @@ const Add = () => {
         })
 
         try {
-            const response = await axios.post(`${backendUrl}`, formDataObj, {
+            const response = await axios.post(`${backendUrl}/api/employee/add`, formDataObj, {
                 headers: {
                     "Content-Type": 'multipart/form-data',
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
