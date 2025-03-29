@@ -23,7 +23,7 @@ const LeaveList = () => {
             }
         } catch (error) {
             if (error.response && !error.response.data.success) {
-                alert(error.message);
+                //alert(error.message);
             }
         }
     };
