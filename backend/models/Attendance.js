@@ -22,6 +22,6 @@ const attendanceSchema = async () => {
 
 };
 
-// attendanceSchema();
+attendanceSchema();
 export { attendanceSchema }
 

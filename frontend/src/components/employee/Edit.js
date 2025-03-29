@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchDepartments } from '../../utils/EmployeeHelper';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
-
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const Edit = () => {
     const [employee, setEmployee] = useState({
@@ -28,7 +28,7 @@ const Edit = () => {
         const fetchEmployee = async () => {            
             try {
                 console.log("In fetchEmployee in Edit and id is ", id)
-                const response = await axios.get(`http://localhost:5000/api/employees/${id}`, {
+                const response = await axios.get(`${backendUrl}/api/employees/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -63,7 +63,7 @@ const Edit = () => {
         e.preventDefault()
 
         try {
-            const response = await axios.put(`http://localhost:5000/api/employee/${id}`, employee, {
+            const response = await axios.put(`${backendUrl}/api/employee/${id}`, employee, {
                 headers: {
                     "Content-Type": 'application/json',
                     "Authorization": `Bearer ${localStorage.getItem('token')}`

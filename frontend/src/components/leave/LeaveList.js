@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useAuth } from '../../context/authContext';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const LeaveList = () => {
     const [leaves, setLeaves] = useState([]);
@@ -11,7 +12,7 @@ const LeaveList = () => {
 
     const fetchLeaves = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/api/leave/${id}`, {
+            const response = await axios.get(`${backendUrl}/api/leave/${id}`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${localStorage.getItem("token")}`

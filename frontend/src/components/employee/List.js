@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { columns, EmployeeButtons } from '../../utils/EmployeeHelper.js';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const List = () => {
   const [employees, setEmployees] = useState([])
@@ -11,7 +12,7 @@ const List = () => {
   useEffect(() => {
     const fetchEmployees = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/employee', {
+        const response = await axios.get(`${backendUrl}/api/employee`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }
@@ -26,7 +27,7 @@ const List = () => {
               dep_name: emp.dep_name,
               name: emp.name,
               dob: new Date(emp.dob).toLocaleDateString(),
-              profile_image: <img width={40} className='rounded-full' src={`http://localhost:5000/${emp.profile_image}`} />,
+              profile_image: <img width={40} className='rounded-full' src={`${backendUrl}/${emp.profile_image}`} />,
               action: (<EmployeeButtons id={emp.userId} />),
 
             }

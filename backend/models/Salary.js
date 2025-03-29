@@ -27,5 +27,5 @@ const salarySchema = async () => {
 
 };
 
-// salarySchema();
+salarySchema();
 export {salarySchema}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const LeaveDetails = () => {
   const { id } = useParams()
@@ -11,7 +12,7 @@ const LeaveDetails = () => {
   useEffect(() => {
     const fetchLeave = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/leave/details/${id}`, {
+        const response = await axios.get(`${backendUrl}/api/leave/details/${id}`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`,
           },
@@ -30,7 +31,7 @@ const LeaveDetails = () => {
 
   const changeStatus = async (id, status) => {
     try {
-      const response = await axios.put(`http://localhost:5000/api/leave/${id}`, {status}, {
+      const response = await axios.put(`${backendUrl}/api/leave/${id}`, {status}, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`,
         },
@@ -50,7 +51,7 @@ const LeaveDetails = () => {
       <h2 className='text-3xl font-extrabold mb-8 text-center text-gray-800'>Leave Details</h2>
       <div className='grid grid-cols-1 md:grid-cols-2 gap-8 '>
         <div className="flex justify-center">
-          <img src={`http://localhost:5000/${getLeaveDetail.profile_image}`} className="rounded-full border-4 border-gray-300 w-45 h-45 object-cover" />
+          <img src={`${backendUrl}/${getLeaveDetail.profile_image}`} className="rounded-full border-4 border-gray-300 w-45 h-45 object-cover" />
         </div>
         <div className="space-y-6 ">
           <div className='flex items-center space-x-3'>

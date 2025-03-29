@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { columns, AttendanceHelper } from '../../utils/AttendanceHelper.js';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const Attendance = () => {
   const [attendance, setAttendance] = useState([])
@@ -15,7 +16,7 @@ const Attendance = () => {
   const fetchAttendance = async () => {
     try {
         console.log("fetching attendance")
-      const response = await axios.get('http://localhost:5000/api/attendance', {
+      const response = await axios.get(`${backendUrl}/api/attendance`, {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         }

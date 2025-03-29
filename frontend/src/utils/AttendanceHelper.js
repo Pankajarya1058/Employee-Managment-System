@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React from 'react';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 export const columns = [
     {
@@ -32,7 +33,7 @@ export const columns = [
 export const AttendanceHelper = ({status, employeeId, statusChange}) => {
 
     const markEmployee =  async (status, employeeId) => {
-        const response = await axios.put(`http://localhost:5000/api/attendance/update/${employeeId}`, {status}, {
+        const response = await axios.put(`${backendUrl}/api/attendance/update/${employeeId}`, {status}, {
             headers: {
           "Authorization": `Bearer ${localStorage.getItem('token')}`
         },

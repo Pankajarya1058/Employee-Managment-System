@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchDepartments } from '../../utils/EmployeeHelper';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const Add = () => {
     const [departments, setDepartments] = useState([])
@@ -34,7 +35,7 @@ const Add = () => {
         })
 
         try {
-            const response = await axios.post('http://localhost:5000/api/employee/add', formDataObj, {
+            const response = await axios.post(`${backendUrl}`, formDataObj, {
                 headers: {
                     "Content-Type": 'multipart/form-data',
                     "Authorization": `Bearer ${localStorage.getItem('token')}`

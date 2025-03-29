@@ -17,7 +17,7 @@ const employeeSchema = async () => {
         salary DECIMAL(10, 2) NOT NULL,
         createdAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         updatedAt TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-        FOREIGN KEY (userId) REFERENCES Users(id),
+        FOREIGN KEY (userId) REFERENCES users(id),
         FOREIGN KEY (departmentId) REFERENCES Department(id)
     );`
 
@@ -29,6 +29,5 @@ const employeeSchema = async () => {
     } 
 };
 
-// employeeSchema();
-
+employeeSchema();
 export default employeeSchema;

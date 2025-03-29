@@ -1,6 +1,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const userContext = createContext()
 
@@ -15,7 +16,7 @@ const AuthContext = ({children}) => {
                 const token = localStorage.getItem('token')
                 const expiry = localStorage.getItem('tokenExpiry');
                 if(token) {
-                const response = await axios.get('http://localhost:5000/api/auth/verify', {
+                const response = await axios.get(`${backendUrl}/api/auth/verify`, {
                     headers: {
                         "Authorization" : `Bearer ${token}`
                     }

@@ -1,0 +1,63 @@
+
+version: "3.8"
+
+services: 
+  mysql:
+    container_name: emsdb
+    image: mysql
+    environment:
+      MYSQL_DATABASE: "ems_db"
+      MYSQL_ROOT_PASSWORD: "Emsdb@321"
+    ports:
+      - "3306:3306"
+    volumes:
+      - emsdbvol:/var/lib/mysql
+    networks:
+      - ems_network
+    restart: always
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  backend:
+    build:
+      context: ./backend
+    container_name: emsbackend
+    ports:
+      - "5000:5000"
+    networks:
+      - ems_network
+    depends_on:
+      mysql:
+        condition: service_healthy
+
+    restart: always
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:5000/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 60s
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: emsfrontend
+    ports:
+      - "80:80"
+    networks:
+      - ems_network
+    restart: always
+    extra_hosts:
+      - "emsbackend:host-gateway"  # Allow frontend to resolve backend
+    depends_on:
+      - backend
+
+volumes:
+  emsdbvol:
+
+networks:
+  ems_network:

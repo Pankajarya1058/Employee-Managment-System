@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const AttendanceReport = () => {
     const [report, setReport] = useState("")
@@ -26,7 +26,7 @@ const AttendanceReport = () => {
             if (dateFilter) {
                 query.append("date", dateFilter)
             }
-            const response = await axios.get(`http://localhost:5000/api/attendance/report?${query.toString()}`, {
+            const response = await axios.get(`${backendUrl}/api/attendance/report?${query.toString()}`, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

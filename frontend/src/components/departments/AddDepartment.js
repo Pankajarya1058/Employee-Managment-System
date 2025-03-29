@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MdDescription } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const AddDepartment = () => {
     const [department, setDepartment] = useState({
@@ -16,7 +17,7 @@ const AddDepartment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const response = await axios.post('http://localhost:5000/api/department/add', department, {
+            const response = await axios.post(`${backendUrl}/api/department/add`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

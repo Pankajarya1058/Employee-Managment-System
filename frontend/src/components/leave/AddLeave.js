@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useAuth } from '../../context/authContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const AddLeave = () => {
     const {user} = useAuth()
@@ -18,7 +19,7 @@ const AddLeave = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/api/leave/add`, leave, {
+            const response = await axios.post(`${backendUrl}/api/leave/add`, leave, {
                 headers: {
                     "Content-Type": 'application/json',
                     "Authorization": `Bearer ${localStorage.getItem('token')}`,

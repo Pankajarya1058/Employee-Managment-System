@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const ViewSalary = () => {
     const [salaries, setSalaries] = useState([]);
@@ -11,7 +12,7 @@ const ViewSalary = () => {
     const fetchSalaries = async () => {
         console.log("User id for salary", id)
         try {
-            const response = await axios.get(`http://localhost:5000/api/salary/${id}`, {
+            const response = await axios.get(`${backendUrl}/api/salary/${id}`, {
                 headers: {
                     "Content-Type": 'application/json',
                     Authorization: `Bearer ${localStorage.getItem("token")}`

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const View = () => {
     const { id } = useParams()
@@ -11,7 +12,7 @@ const View = () => {
     useEffect(() => {
         const fetchEmployee = async () => {            
             try {
-                const response = await axios.get(`http://localhost:5000/api/employees/${id}`, {
+                const response = await axios.get(`${backendUrl}/api/employees/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -46,7 +47,7 @@ const View = () => {
         <h2 className='text-3xl font-extrabold mb-8 text-center text-gray-800'>Employee Details</h2>
         <div className='grid grid-cols-1 md:grid-cols-2 gap-8 '>
             <div className="flex justify-center">
-                <img src={`http://localhost:5000/${employee.profile_image}`} className="rounded-full border-4 border-gray-300 w-45 h-45 object-cover"/>
+                <img src={`${backendUrl}/${employee.profile_image}`} className="rounded-full border-4 border-gray-300 w-45 h-45 object-cover"/>
             </div>
             <div className="space-y-6 ">
             <div className='flex items-center space-x-3'>

@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import {useAuth} from '../context/authContext'
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
+//const backendUrl = "/api";
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -13,7 +15,8 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+	    console.log("backendUrl", backendUrl)
+            const response = await axios.post(`${backendUrl}/api/auth/login`, { email, password }, { withCredentials: true });
             if(response.data.success) {
                 login(response.data.user)
                 localStorage.setItem("token", response.data.token)

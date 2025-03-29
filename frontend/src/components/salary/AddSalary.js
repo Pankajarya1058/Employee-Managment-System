@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { fetchDepartments, getEmployees } from '../../utils/EmployeeHelper';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const AddSalary = () => {
     const [salary, setSalary] = useState({
@@ -59,7 +60,7 @@ const AddSalary = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://localhost:5000/api/salary/add`, salary, {
+            const response = await axios.post(`${backendUrl}/api/salary/add`, salary, {
                 headers: {
                     "Content-Type": "application/json",
                     "Authorization": `Bearer ${localStorage.getItem('token')}`

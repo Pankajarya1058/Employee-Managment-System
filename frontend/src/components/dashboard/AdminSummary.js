@@ -2,13 +2,15 @@ import React, { useEffect, useState } from 'react';
 import SummaryCard from './SummaryCard';
 import { FaBuilding, FaCheckCircle, FaFileAlt, FaHourglassHalf, FaMoneyBillWave, FaTimesCircle, FaUsers } from 'react-icons/fa';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
+//const backendUrl = "/api";
 
 const AdminSummary = () => {
   const [summary, setSummary] = useState(null)
   useEffect(() => {
     const fetchSummary = async () => {
       try {
-        const summary = await axios.get('http://localhost:5000/api/dashboard/summary', {
+        const summary = await axios.get(`${backendUrl}/api/dashboard/summary`, {
           headers: {
             "Authorization": `Bearer ${localStorage.getItem('token')}`
           }

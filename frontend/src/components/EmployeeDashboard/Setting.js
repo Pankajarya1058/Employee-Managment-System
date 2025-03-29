@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../context/authContext';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const Setting = () => {
   const navigate = useNavigate()
@@ -24,7 +25,7 @@ const Setting = () => {
     } else {
       try {
         console.log("in try block of calling API")
-        const response = await axios.put("http://localhost:5000/api/setting/change-password", setting, {
+        const response = await axios.put(`${backendUrl}/api/setting/change-password`, setting, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
           },

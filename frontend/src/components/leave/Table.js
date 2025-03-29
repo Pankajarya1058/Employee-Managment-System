@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { columns, LeaveButtons } from '../../utils/LeaveHelper.js';
 import DataTable from 'react-data-table-component';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const Table = () => {
   const [leaves, setLeaves] = useState([])
@@ -9,7 +10,7 @@ const Table = () => {
 
   const fetchLeaves = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/leave', {
+      const response = await axios.get(`${backendUrl}/api/leave`, {
         headers: {
 
           "Authorization": `Bearer ${localStorage.getItem('token')}`

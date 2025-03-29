@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const EditDepartment = () => {
     const { id } = useParams()
@@ -13,7 +14,7 @@ const EditDepartment = () => {
             console.log('Now in Fetch department...');
 
             try {
-                const response = await axios.get(`http://localhost:5000/api/department/${id}`, {
+                const response = await axios.get(`${backendUrl}/api/department/${id}`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`,
                     },
@@ -43,7 +44,7 @@ const EditDepartment = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.put(`http://localhost:5000/api/department/${id}`, department, {
+            const response = await axios.put(`${backendUrl}/api/department/${id}`, department, {
                 headers: {
                     "Authorization": `Bearer ${localStorage.getItem('token')}`
                 }

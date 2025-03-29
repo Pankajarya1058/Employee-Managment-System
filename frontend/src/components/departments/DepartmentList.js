@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import DataTable from 'react-data-table-component';
 import { columns, DepartmentButtons } from '../../utils/DepartmentHelper';
 import axios from 'axios';
+const backendUrl = process.env.REACT_APP_EMS_BACKEND_URL;
 
 const DepartmentList = () => {
     const [departments, setDepartment] = useState([])
@@ -24,7 +25,7 @@ const DepartmentList = () => {
     useEffect(() => {
         const fetchDepartments = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/api/department', {
+                const response = await axios.get(`${backendUrl}/api/department`, {
                     headers: {
                         "Authorization": `Bearer ${localStorage.getItem('token')}`
                     }
