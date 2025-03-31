@@ -64,3 +64,11 @@ This will:
 ```
 http://<ip-of-your-server>/
 ```
+
+### Stopping the Application
+
+To stop the containers, run:
+```
+docker-compose down
+```
+
