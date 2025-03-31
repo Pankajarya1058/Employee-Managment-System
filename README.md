@@ -1,12 +1,12 @@
-<h1>This is Employee Management System application</h1>
-##Overview
+<h1>Employee Management System application</h1>
+## Overview
 
 The Employee Management System is a web application that allows users to manage employee records, including adding, updating, and deleting employee details. The system is built with:
 
-Frontend: ReactJS
+### Frontend: ReactJS
 
-Backend: NodeJS with Express
+### Backend: NodeJS with Express
 
-Database: MySQL
+### Database: MySQL
 
-Deployment: Docker (with multi-stage builds)
+### Deployment: Docker (with multi-stage builds)
