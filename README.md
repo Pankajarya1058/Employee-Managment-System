@@ -38,7 +38,7 @@ Ensure you have the following installed:
 
 ### Clone the Repository
 ```
-git clone https://github.com/Panky1058/Employee-Managment-System.git
+git clone https://github.com/Pankajarya1058/Employee-Managment-System.git
 cd Employee-Managment-System
 ```
 ### Switch to devops branch
