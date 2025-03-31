@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Employee Management System is a web application that allows users to manage employee records, including adding, updating, and deleting employee details. The system is built with:
+The Employee Management System is a web application that allows admin to manage employee records, including adding, updating, and deleting employee details. The system is built with:
 
 **Frontend:** ReactJS
 
