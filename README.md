@@ -1,4 +1,4 @@
-### Employee Management System application
+# Employee Management System application
 
 ## Overview
 
