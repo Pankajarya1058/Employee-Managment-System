@@ -36,17 +36,17 @@ Ensure you have the following installed:
 
 ## Installation & Setup
 
-**Clone the Repository**
+### Clone the Repository
 ```
 git clone https://github.com/Panky1058/Employee-Managment-System.git
 cd Employee-Management-System
 ```
-## Switch to devops branch
+### Switch to devops branch
 ```
 git switch devops
 ```
 
-## Run with Docker Compose
+### Run with Docker Compose
 
 ```
 docker-compose up --build -d
