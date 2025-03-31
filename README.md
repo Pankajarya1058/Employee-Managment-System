@@ -28,7 +28,7 @@ Employee-Eanagement-System/
 
 Ensure you have the following installed:
 
-- [Docker](https://docs.docker.com/engine/install/){:target="_blank"}
+- <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">Docker</a>
 
 - [Docker Compose](https://docs.docker.com/compose/install/){:target="_blank"}
 
