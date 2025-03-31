@@ -63,6 +63,8 @@ This will:
 ### Access the application through browser
 ```
 http://<ip-of-your-server>/
+Email: admin@gmail.com
+Password: admin
 ```
 
 ### Stopping the Application
