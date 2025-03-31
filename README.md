@@ -59,3 +59,8 @@ This will:
 - Start the NodeJS backend API
 
 - Set up the MySQL database
+
+### Access the application through browser
+```
+http://<ip-of-your-server>/
+```
