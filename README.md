@@ -14,13 +14,14 @@ The Employee Management System is a web application that allows users to manage 
 
 ## Project Structure
 
-employee-management-system/
+```employee-management-system/
 ├── frontend/          # ReactJS source code
 |   ├── Dockerfile
 ├── backend/           # NodeJS source code
 |   ├── Dockerfile
 ├── docker-compose.yml # Docker Compose file
 └── README.md          # Project documentation
+```
 
 ## Prerequisites
 
