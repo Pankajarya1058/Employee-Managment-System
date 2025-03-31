@@ -6,7 +6,7 @@ The Employee Management System is a web application that allows users to manage 
 
 **Frontend:** ReactJS
 
-**Backend:** NodeJS with Express
+**Backend:** NodeJS
 
 **Database:** MySQL
 
@@ -14,7 +14,8 @@ The Employee Management System is a web application that allows users to manage 
 
 ## Project Structure
 
-```employee-management-system/
+```
+Employee-Eanagement-System/
 ├── frontend/          # ReactJS source code
 |   ├── Dockerfile
 ├── backend/           # NodeJS source code
@@ -32,3 +33,23 @@ Ensure you have the following installed:
 - Docker Compose
 
 - Git
+
+## Installation & Setup
+
+Clone the Repository
+```
+git clone https://github.com/yourusername/employee-management-system.git
+cd employee-management-system
+```
+
+## Run with Docker Compose
+
+```docker-compose up --build -d```
+
+This will:
+
+- Build and run the ReactJS frontend
+
+- Start the NodeJS backend API
+
+- Set up the MySQL database
