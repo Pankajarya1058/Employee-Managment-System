@@ -29,7 +29,9 @@ Employee-Eanagement-System/
 Ensure you have the following installed:
 
 - <a href="https://docs.docker.com/engine/install/" target="_blank" rel="noopener noreferrer">Docker</a>
+
 - <a href="https://docs.docker.com/compose/install/" target="_blank" rel="noopener noreferrer">Docker Compose</a>
+
 - <a href="https://git-scm.com/downloads" target="_blank" rel="noopener noreferrer">Git</a>
 
 ## Installation & Setup
