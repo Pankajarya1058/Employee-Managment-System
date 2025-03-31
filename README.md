@@ -38,8 +38,12 @@ Ensure you have the following installed:
 
 Clone the Repository
 ```
-git clone https://github.com/yourusername/employee-management-system.git
-cd employee-management-system
+git clone https://github.com/Panky1058/Employee-Managment-System.git
+cd Employee-Management-System
+```
+## Switch to devops branch
+```
+git switch devops
 ```
 
 ## Run with Docker Compose
