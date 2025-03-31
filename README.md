@@ -36,7 +36,7 @@ Ensure you have the following installed:
 
 ## Installation & Setup
 
-Clone the Repository
+**Clone the Repository**
 ```
 git clone https://github.com/Panky1058/Employee-Managment-System.git
 cd Employee-Management-System
