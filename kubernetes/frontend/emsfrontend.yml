@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: emsfrontdeploy
+  labels:
+    app: emsfrontendapp
+  namespace: ems
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: emsfrontendPod
+  template:
+    metadata:
+      labels:
+        app: emsfrontendPod
+    spec:
+      containers:
+        - name: emsfrontendcon
+          image: pankajarya12345/emsfrontend:latest 
+          ports:
+            - containerPort: 80

@@ -1,0 +1,67 @@
+# PV configuration
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ems-mysql-pv
+spec:
+  capacity:
+    storage: 1Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  storageClassName: manual
+  hostPath:
+    path: "/mnt/data/mysql"
+
+# PVC configuration      
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ems-mysql-pvc
+  namespace: ems
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  storageClassName: manual
+
+# StatefuleSet for mysql        
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: ems-mysql-statefulset
+  namespace: ems
+spec:
+  serviceName: "mysql"
+  replicas: 1 
+  selector:
+    matchLabels:
+      app: emsappmysql
+  template:
+    metadata:
+      labels:
+        app: emsappmysql
+    spec:
+      containers:
+        - name: mysql
+          image: mysql
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "Emsdb@321"
+            - name: MYSQL_DATABASE
+              value: "ems_db"
+          ports:
+            - containerPort: 3306
+          volumeMounts:
+            - name: ems-db-data
+              mountPath: /var/lib/mysql
+      volumes:
+        - name: ems-db-data
+          persistentVolumeClaim:
+            claimName: ems-mysql-pvc
