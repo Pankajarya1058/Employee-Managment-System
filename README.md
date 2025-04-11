@@ -33,6 +33,8 @@ Ensure you have the following installed:
 
 - [MySQL Database](https://dev.mysql.com/downloads/installer/)
 
+  
+
 ## Locally Installation & Setup
 Install the MySQL Database on you local and configure according to backend/.env file.
 
@@ -58,6 +60,7 @@ node index.js
 npm start
 ```
 
+
 ## Setup with Docker container
 
 ### Project Structure
@@ -81,7 +84,7 @@ Ensure you have the following installed:
 - [Docker Compose](https://docs.docker.com/compose/install/)
 
 - [Git](https://git-scm.com/downloads)
-- 
+
 ### Clone the Repository
 ```
 git clone https://github.com/Pankajarya1058/Employee-Managment-System.git
